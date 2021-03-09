@@ -1,0 +1,4 @@
+images/k_a_01.jpg
+images/k_a_02.jpg
+images/k_a_03.jpg
+images/k_a_04.jpg

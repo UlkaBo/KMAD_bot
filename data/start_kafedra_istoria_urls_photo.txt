@@ -1,0 +1,8 @@
+images/k_i_01.jpg
+images/k_i_02.jpg
+images/k_i_03.jpg
+images/k_i_04.jpg
+images/k_i_07.jpg
+images/k_i_08.jpg
+images/k_i_09.jpg
+images/k_i_10.jpg
