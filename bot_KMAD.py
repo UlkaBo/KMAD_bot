@@ -65,11 +65,6 @@ contents = {'start': {'text': ['start1.txt', 'start2.txt'],
                                                }}
                        }}
             }
-'''
-keyboard_start = [[KeyboardButton("Кафедра КМАД"),
-                   KeyboardButton("Можливості для студентів"),
-                   KeyboardButton("Умови вступу")]]
-'''
 
 reply_kb_markup = ReplyKeyboardMarkup(
     [KeyboardButton("__")], resize_keyboard=True,
@@ -154,29 +149,6 @@ def start(update: Update, context: CallbackContext):
         update.callback_query.message.reply_photo(url_photo)
         update.callback_query.message.reply_text(
             content2, reply_markup=reply_start)
-
-
-'''
-def kafedra_m(update: Update, context: CallbackContext):
-    content = read_content(link +
-                           contents['start']['next_menu']['kafedra']['text'][0])
-    reply = InlineKeyboardMarkup(keyboard_kafedra)
-    update.message.reply_text(text=content, reply_markup=reply)
-
-
-def mozhlyvosti_m(update: Update, context: CallbackContext):
-    content = read_content(link +
-                           contents['start']['next_menu']['mozhlyvosti']['text'][0])
-    reply = InlineKeyboardMarkup(keyboard_mozhlyvosti)
-    update.message.reply_text(text=content, reply_markup=reply)
-
-
-def umovy_m(update: Update, context: CallbackContext):
-    content = read_content(
-        link + contents['start']['next_menu']['umovy']['text'][0])
-    reply = InlineKeyboardMarkup(keyboard_umovy)
-    update.message.reply_text(text=content, reply_markup=reply)
-'''
 
 
 def kafedra(update: Update, context: CallbackContext):
