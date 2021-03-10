@@ -69,7 +69,7 @@ contents = {'start': {'text': ['start1.txt', 'start2.txt'],
 ks = [[KeyboardButton("НА ПОЧАТОК")]]
 reply_kb_markup = ReplyKeyboardMarkup(
     ks, resize_keyboard=True,
-    one_time_keyboard=True, remove_keyboard=False)
+    remove_keyboard=False)
 
 keyboard_kafedra = [
     [InlineKeyboardButton("Викладачі", callback_data="vykladachi")],
