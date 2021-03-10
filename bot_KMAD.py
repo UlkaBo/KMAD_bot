@@ -6,7 +6,7 @@ import logging
 from telegram.ext import (Updater, CommandHandler, MessageHandler,
                           Filters, CallbackQueryHandler,
                           ConversationHandler, CallbackContext)
-from telegram import Update, Bot
+from telegram import Update, Bot, ReplyKeyboardRemove
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 import datetime
 TOKEN = '1638396072:AAG5P6RseKWvZAY7qZIUelkjAAlOJBMWrk0'
@@ -146,7 +146,7 @@ def start(update: Update, context: CallbackContext):
         update.message.reply_text(content2, reply_markup=reply_start)
     except:
         update.callback_query.message.reply_text(
-            content1, reply_markup=reply_kb_markup, parse_mode="Markdown")
+            content1, reply_markup=ReplyKeyboardRemove(), parse_mode="Markdown")
         update.callback_query.message.reply_photo(url_photo)
         update.callback_query.message.reply_text(
             content2, reply_markup=reply_start)
