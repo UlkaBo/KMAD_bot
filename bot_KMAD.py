@@ -71,7 +71,7 @@ keyboard_start = [[KeyboardButton("Кафедра КМАД"),
                    KeyboardButton("Умови вступу")]]
 '''
 
-reply_kb_markup = ReplyKeyboardMarkup('', remove_keyboard=False)
+reply_kb_markup = ReplyKeyboardMarkup('rr', remove_keyboard=False)
 
 keyboard_kafedra = [
     [InlineKeyboardButton("Викладачі", callback_data="vykladachi")],
