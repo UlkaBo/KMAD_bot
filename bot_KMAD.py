@@ -66,10 +66,9 @@ contents = {'start': {'text': ['start1.txt', 'start2.txt'],
                        }}
             }
 
-ks = [[KeyboardButton("НА ПОЧАТОК")]]
-reply_kb_markup = ReplyKeyboardMarkup(
-    ks, resize_keyboard=True,
-    remove_keyboard=False)
+keyboard_question = [[KeyboardButton("Задати додаткове питання")]]
+reply_question_markup = ReplyKeyboardMarkup(keyboard_question, resize_keyboard=True,
+                                            one_time_keyboard=False)
 
 keyboard_kafedra = [
     [InlineKeyboardButton("Викладачі", callback_data="vykladachi")],
@@ -139,17 +138,16 @@ def start(update: Update, context: CallbackContext):
     url_photo = "http://web.kpi.kharkov.ua/kmmm/wp-content/uploads/sites/110/2013/09/Slide3.jpg"
     content2 = read_content(link + contents['start']['text'][1])
     reply_start = InlineKeyboardMarkup(keyboard_start)
-    try:
-        # reply_markup=reply_kb_markup,
-        update.message.reply_text(content1,  parse_mode="Markdown")
-        update.message.reply_photo(url_photo)
-        update.message.reply_text(content2, reply_markup=reply_start)
-    except:
-        update.callback_query.message.reply_text(
-            content1, reply_markup=ReplyKeyboardRemove(), parse_mode="Markdown")
-        update.callback_query.message.reply_photo(url_photo)
-        update.callback_query.message.reply_text(
-            content2, reply_markup=reply_start)
+    if update.message is None:
+        event = update.callback_query.message
+    else:
+        event = update.message
+
+    event.reply_text(
+        content1, reply_markup=reply_question_markup, parse_mode="Markdown")
+    # если нужно удалить нижнюю клавиатуру reply_markup=ReplyKeyboardRemove()
+    event.reply_photo(url_photo)
+    event.reply_text(content2, reply_markup=reply_start)
 
 
 def kafedra(update: Update, context: CallbackContext):
@@ -403,6 +401,11 @@ def kilkistMists(update: Update, context: CallbackContext):
 # -------------------------------**   end block umovy  **----------------------------
 
 
+def question(update, context):
+    update.message.reply_text(
+        '[Напишіть нашому представнику кафедри  ](https://t.me/kmad_khpi)', parse_mode="Markdown")
+
+
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -428,7 +431,8 @@ def main():
         '^Можливості для студентів$'), mozhlyvosti_m))
     dp.add_handler(MessageHandler(Filters.regex('^Умови вступу$'), umovy_m))
     '''
-    dp.add_handler(MessageHandler(Filters.regex('^НА ПОЧАТОК$'), start))
+    dp.add_handler(MessageHandler(Filters.regex(
+        '^Задати додаткове питання$'), question))
 
     dp.add_handler(CallbackQueryHandler(start, pattern="start"))
 
