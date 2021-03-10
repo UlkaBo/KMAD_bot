@@ -70,9 +70,8 @@ keyboard_start = [[KeyboardButton("Кафедра КМАД"),
                    KeyboardButton("Можливості для студентів"),
                    KeyboardButton("Умови вступу")]]
 '''
-keyboard_start = [[KeyboardButton("НА ПОЧАТОК")]]
-reply_kb_markup = ReplyKeyboardMarkup(keyboard_start, resize_keyboard=True,
-                                      one_time_keyboard=False)
+
+reply_kb_markup = ReplyKeyboardMarkup('', remove_keyboard=False)
 
 keyboard_kafedra = [
     [InlineKeyboardButton("Викладачі", callback_data="vykladachi")],
@@ -104,13 +103,26 @@ keyboard_umovy = [
 ]
 keyboard_backto_kafedra = [
     [InlineKeyboardButton("Назад",
-                          callback_data="kafedra")]]
+                          callback_data="kafedra")],
+    [InlineKeyboardButton("На початок",
+                          callback_data="start")]]
 keyboard_backto_mozhlyvosti = [
     [InlineKeyboardButton("Назад",
-                          callback_data="mozhlyvosti")]]
+                          callback_data="mozhlyvosti")],
+    [InlineKeyboardButton("На початок",
+                          callback_data="start")]]
 keyboard_backto_umovy = [
     [InlineKeyboardButton("Назад",
-                          callback_data="umovy")]]
+                          callback_data="umovy")],
+    [InlineKeyboardButton("На початок",
+                          callback_data="start")]]
+
+keyboard_start = [
+    [InlineKeyboardButton("Кафедра КМАД", callback_data="kafedra")],
+    [InlineKeyboardButton("Можливості для студентів",
+                          callback_data="mozhlyvosti")],
+    [InlineKeyboardButton("Умови вступу", callback_data="umovy")]
+]
 
 
 def read_content(url_file):
@@ -124,31 +136,22 @@ def read_content(url_file):
 
 
 def start(update: Update, context: CallbackContext):
-    '''
-    print(1)
-    user = update.message.from_user
-    file = open("users.txt", 'a+')
-    n = user.first_name +' '
-    print(2)
-    n += user.last_name if user.last_name else ''
-    name = n + ' ' + 'id: ' + str(user.id) + ' ' \
-           + datetime.datetime.now().strftime("%Y %B %d. %A, %I: %M%p") \
-           + ' ' + str(datetime.datetime.now())
-    print(3)
-    file.write(name + '\n')
-    file.close()
-    print(4)
-    '''
-    print(link + contents['start']['text'][0])
-    content = read_content(link + contents['start']['text'][0])
-    print(content)
-    keyboard = [
-        [InlineKeyboardButton("Кафедра КМАД", callback_data="kafedra")],
-        [InlineKeyboardButton("Можливості для студентів",
-                              callback_data="mozhlyvosti")],
-        [InlineKeyboardButton("Умови вступу", callback_data="umovy")]
-    ]
-    reply = InlineKeyboardMarkup(keyboard)
+
+    content1 = read_content(link + contents['start']['text'][0])
+    url_photo = "http://web.kpi.kharkov.ua/kmmm/wp-content/uploads/sites/110/2013/09/Slide3.jpg"
+    content2 = read_content(link + contents['start']['text'][1])
+    reply_start = InlineKeyboardMarkup(keyboard_start)
+    try:
+        # reply_markup=reply_kb_markup,
+        update.message.reply_text(content1,  parse_mode="Markdown")
+        update.message.reply_photo(url_photo)
+        update.message.reply_text(content2, reply_markup=reply_start)
+    except:
+        update.callback_query.message.reply_text(
+            content1, reply_markup=reply_kb_markup, parse_mode="Markdown")
+        update.callback_query.message.reply_photo(url_photo)
+        update.callback_query.message.reply_text(
+            content2, reply_markup=reply_start)
 
     update.message.reply_text(
         content, reply_markup=reply_kb_markup, parse_mode="Markdown")
@@ -458,6 +461,8 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex('^Умови вступу$'), umovy_m))
     '''
     dp.add_handler(MessageHandler(Filters.regex('^НА ПОЧАТОК$'), start))
+
+    dp.add_handler(CallbackQueryHandler(start, pattern="start"))
 
     dp.add_handler(CallbackQueryHandler(kafedra, pattern="kafedra"))
     dp.add_handler(CallbackQueryHandler(mozhlyvosti, pattern="mozhlyvosti"))

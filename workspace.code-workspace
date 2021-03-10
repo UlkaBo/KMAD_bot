@@ -1,12 +1,12 @@
 {
   "folders": [
-	{
-		"path": "../../HTML-CSS/goit-markup-hw-02"
-	},
-	{
-		"path": "../content-for-telegtam-bot"
-	}
-],
+    {
+      "path": "."
+    },
+    {
+      "path": "../goit-python"
+    }
+  ],
   "settings": {
     "liveServer.settings.multiRootWorkspaceName": "content-for-telegtam-bot"
   }
