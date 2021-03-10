@@ -153,13 +153,6 @@ def start(update: Update, context: CallbackContext):
         update.callback_query.message.reply_text(
             content2, reply_markup=reply_start)
 
-    update.message.reply_text(
-        content, reply_markup=reply_kb_markup, parse_mode="Markdown")
-    url_photo = "http://web.kpi.kharkov.ua/kmmm/wp-content/uploads/sites/110/2013/09/Slide3.jpg"
-    update.message.reply_photo(url_photo)
-    content = read_content(link + contents['start']['text'][1])
-    update.message.reply_text(content, reply_markup=reply)
-
 
 '''
 def kafedra_m(update: Update, context: CallbackContext):
