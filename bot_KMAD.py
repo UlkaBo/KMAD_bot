@@ -93,10 +93,10 @@ keyboard_umovy = [
                           callback_data="rozrakhunokBalu")],
     [InlineKeyboardButton("Етапи вступної кампанії",
                           callback_data="etapy")],
-    [InlineKeyboardButton("Корисні посилання",
-                          callback_data="posylannya")],
     [InlineKeyboardButton(
         "Кількість бюджетних та \nконтрактних місць для вступників", callback_data="kilkistMists")],
+    [InlineKeyboardButton("Корисні посилання",
+                          callback_data="posylannya")],
 ]
 keyboard_backto_kafedra = [
     [InlineKeyboardButton("Назад",
@@ -234,7 +234,7 @@ def istoria(update: Update, context: CallbackContext):
         print('e', i)
         print('\n'.join(content_lines[i*step:]))
     query.message.reply_text(
-        text='\n'.join(content_lines[i*step:]), reply_markup=reply, parse_mode="Markdown")
+        text='\n'.join(content_lines[(i+1)*step:]), reply_markup=reply, parse_mode="Markdown")
 
 
 def auditorii(update: Update, context: CallbackContext):
@@ -294,7 +294,6 @@ def proektnnavch(update: Update, context: CallbackContext):
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
         text=content, reply_markup=reply, parse_mode="Markdown")
-    #query.message.reply_text(text="Що ще Вас цікавить ? ", reply_markup=reply)
 
 
 def dualosvita(update: Update, context: CallbackContext):
@@ -307,7 +306,6 @@ def dualosvita(update: Update, context: CallbackContext):
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
         text=content, reply_markup=reply, parse_mode="Markdown")
-    #query.message.reply_text(text="Що ще Вас цікавить ? ", reply_markup=reply)
 
 
 def pratsevlashuv(update: Update, context: CallbackContext):
@@ -320,7 +318,6 @@ def pratsevlashuv(update: Update, context: CallbackContext):
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
         text=content, reply_markup=reply, parse_mode="Markdown")
-    #query.message.reply_text(text="Що ще Вас цікавить ? ", reply_markup=reply)
 
 
 def praktika(update: Update, context: CallbackContext):
@@ -333,7 +330,7 @@ def praktika(update: Update, context: CallbackContext):
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
         text=content, reply_markup=reply, parse_mode="Markdown")
-    #query.message.reply_text(text="Що ще Вас цікавить ? ", reply_markup=reply)
+
 # -------------------------------**   end block mozhlyvosti  **----------------------------
 
 
