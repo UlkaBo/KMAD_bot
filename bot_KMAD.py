@@ -102,23 +102,31 @@ keyboard_backto_kafedra = [
     [InlineKeyboardButton("Назад",
                           callback_data="kafedra")],
     [InlineKeyboardButton("На початок",
-                          callback_data="start")]]
+                          callback_data="start")],
+    [InlineKeyboardButton("Задати питання",
+                          callback_data="question")], ]
 keyboard_backto_mozhlyvosti = [
     [InlineKeyboardButton("Назад",
                           callback_data="mozhlyvosti")],
     [InlineKeyboardButton("На початок",
-                          callback_data="start")]]
+                          callback_data="start")],
+    [InlineKeyboardButton("Задати питання",
+                          callback_data="question")], ]
 keyboard_backto_umovy = [
     [InlineKeyboardButton("Назад",
                           callback_data="umovy")],
     [InlineKeyboardButton("На початок",
-                          callback_data="start")]]
+                          callback_data="start")],
+    [InlineKeyboardButton("Задати питання",
+                          callback_data="question")], ]
 
 keyboard_start = [
     [InlineKeyboardButton("Кафедра КМАД", callback_data="kafedra")],
     [InlineKeyboardButton("Можливості для студентів",
                           callback_data="mozhlyvosti")],
-    [InlineKeyboardButton("Умови вступу", callback_data="umovy")]
+    [InlineKeyboardButton("Умови вступу", callback_data="umovy")],
+    [InlineKeyboardButton("Зв’язатися із кафедрою",
+                          callback_data="question")],
 ]
 
 
@@ -144,7 +152,7 @@ def start(update: Update, context: CallbackContext):
         event = update.message
 
     event.reply_text(
-        content1, reply_markup=reply_question_markup, parse_mode="Markdown")
+        content1, reply_markup=ReplyKeyboardRemove(), parse_mode="Markdown")
     # если нужно удалить нижнюю клавиатуру reply_markup=ReplyKeyboardRemove()
     event.reply_photo(url_photo)
     event.reply_text(content2, reply_markup=reply_start)
@@ -399,8 +407,8 @@ def kilkistMists(update: Update, context: CallbackContext):
 
 
 def question(update, context):
-    update.message.reply_text(
-        '[Напишіть нашому представнику кафедри  ](https://t.me/kmad_khpi)', parse_mode="Markdown")
+    update.callback_query.message.reply_text('[Напишіть нашому представнику кафедри  ](https://t.me/kmad_khpi/)',
+                                             parse_mode="MarkdownV2", disable_web_page_preview=True)
 
 
 def error(update, context):
@@ -428,10 +436,10 @@ def main():
         '^Можливості для студентів$'), mozhlyvosti_m))
     dp.add_handler(MessageHandler(Filters.regex('^Умови вступу$'), umovy_m))
     '''
-    dp.add_handler(MessageHandler(Filters.regex(
-        '^Задати додаткове питання$'), question))
+    #dp.add_handler(MessageHandler(Filters.regex('^Задати додаткове питання$'), question))
 
     dp.add_handler(CallbackQueryHandler(start, pattern="start"))
+    dp.add_handler(CallbackQueryHandler(question, pattern="question"))
 
     dp.add_handler(CallbackQueryHandler(kafedra, pattern="kafedra"))
     dp.add_handler(CallbackQueryHandler(mozhlyvosti, pattern="mozhlyvosti"))
