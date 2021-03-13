@@ -466,8 +466,6 @@ def main():
     dp.add_handler(CallbackQueryHandler(posylannya, pattern="posylannya"))
     dp.add_handler(CallbackQueryHandler(kilkistMists, pattern="kilkistMists"))
 
-    # log all errors
-
     dp.add_error_handler(error)
 
     # Start the Bot
