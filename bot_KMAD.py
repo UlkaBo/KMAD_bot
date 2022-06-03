@@ -12,7 +12,8 @@ import datetime
 from config_ import TOKEN
 
 
-link = 'https://ulkabo.github.io/content-for-telegtam-bot/data/'
+#link = 'https://ulkabo.github.io/content-for-telegtam-bot/data/'
+link = 'https://ulkabo.github.io/KMAD_bot/data/'
 
 #file = open("users.txt", '+')
 #import sqlite3
