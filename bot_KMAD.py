@@ -9,8 +9,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler,
 from telegram import Update, Bot, ReplyKeyboardRemove
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
 import datetime
-# 1638396072:AAG5P6RseKWvZAY7qZIUelkjAAlOJBMWrk0
-TOKEN = '1638396072:AAGbvBq4UMpmXFBqapwD0V5sxHfxdSPgveI'
+from config_ import TOKEN
 
 
 link = 'https://ulkabo.github.io/content-for-telegtam-bot/data/'
