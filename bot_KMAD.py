@@ -54,7 +54,7 @@ contents = {'start': {'text': ['start1.txt', 'start2.txt'],
                                                      }},
                        'umovy': {'text': ['start_umovy.txt'],
                                  'photo': [],
-                                 'next_menu': {'predmetiZNO': {'text': ['start_umovy_predmetiZNO.txt'],
+                                 'next_menu': {'predmetiZNO': {'text': ['start_umovy_PZSOwar.txt'], #'start_umovy_predmetiZNO.txt'
                                                                'photo': []},
                                                'rozrakhunokBalu': {'text': ['start_umovy_rozrakhunokBalu.txt'],
                                                                    'photo': []},
@@ -89,7 +89,7 @@ keyboard_mozhlyvosti = [
     [InlineKeyboardButton("Практика", callback_data="praktika")],
 ]
 keyboard_umovy = [
-    [InlineKeyboardButton("Конкурсні предмети ЗНО",
+    [InlineKeyboardButton("Вступ на Бакалаврат на основі ПЗСО (після 11 класів) ",
                           callback_data="predmetiZNO")],
     [InlineKeyboardButton("Розрахунок конкурсного балу",
                           callback_data="rozrakhunokBalu")],
