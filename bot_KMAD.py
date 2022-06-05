@@ -232,11 +232,11 @@ def istoria(update: Update, context: CallbackContext):
         print('b', i)
         text_message = '\n'.join(
             content_lines[i*step:(i+1)*step])
-        print("text_message ", text_message)
+        print("text_message "+text_message)
         query.message.reply_text(text= text_message, parse_mode="Markdown")
         print('m', i//step)
         link_photo = link + photos[i]
-        print("link_photo ", link_photo)
+        print("link_photo"+link_photo+'--')
         query.message.reply_photo(link_photo)
         print('e', i)
         print('\n'.join(content_lines[i*step:]))
