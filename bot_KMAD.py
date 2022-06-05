@@ -225,7 +225,7 @@ def istoria(update: Update, context: CallbackContext):
     query.answer()
 
     reply = InlineKeyboardMarkup(keyboard_backto_kafedra)
-    step = len(content_lines) // len(photos)
+    step = (len(content_lines)-1) // len(photos)
     print(len(content_lines), len(photos), step)
 
     for i in range(len(photos)):
