@@ -82,14 +82,14 @@ keyboard_mozhlyvosti = [
     [InlineKeyboardButton("Практика", callback_data="praktika")],
 ]
 keyboard_umovy = [
-    [InlineKeyboardButton("Вступ на Бакалаврат на основі ПЗСО (після 11 класів) ",
+    [InlineKeyboardButton("Вступ на Бакалаврат на основі ПЗСО \n(після 11 класів) ",
                           callback_data="predmetiZNO")],
     [InlineKeyboardButton("Розрахунок конкурсного балу",
                           callback_data="rozrakhunokBalu")],
     [InlineKeyboardButton("Етапи вступної кампанії",
                           callback_data="etapy")],
     [InlineKeyboardButton(
-        "Кількість бюджетних та \nконтрактних місць для вступників", callback_data="kilkistMists")],
+        "Кількість бюджетних та \nконтрактних місць \nдля вступників", callback_data="kilkistMists")],
     [InlineKeyboardButton("Корисні посилання",
                           callback_data="posylannya")],
 ]
@@ -147,7 +147,7 @@ def start(update: Update, context: CallbackContext):
         event = update.message
 
     event.reply_text(
-        content1, reply_markup=ReplyKeyboardRemove(), parse_mode="Markdown")
+        content1, reply_markup=ReplyKeyboardRemove(), parse_mode="MarkdownV2")
     # если нужно удалить нижнюю клавиатуру reply_markup=ReplyKeyboardRemove()
     event.reply_photo(url_photo)
     event.reply_text(content2, reply_markup=reply_start)
@@ -196,7 +196,7 @@ def vykladachi(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_kafedra)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def vidminnosti(update: Update, context: CallbackContext):
@@ -208,7 +208,7 @@ def vidminnosti(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_kafedra)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def istoria(update: Update, context: CallbackContext):
@@ -231,13 +231,13 @@ def istoria(update: Update, context: CallbackContext):
     for i in range(len(photos)):
         print('b', i)
         query.message.reply_text(text='\n'.join(
-            content_lines[i*step:(i+1)*step]), parse_mode="Markdown")
+            content_lines[i*step:(i+1)*step]), parse_mode="MarkdownV2")
         print('m', i//step)
         query.message.reply_photo(link + photos[i])
         print('e', i)
         print('\n'.join(content_lines[i*step:]))
     query.message.reply_text(
-        text='\n'.join(content_lines[(i+1)*step:]), reply_markup=reply, parse_mode="Markdown")
+        text='\n'.join(content_lines[(i+1)*step:]), reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def auditorii(update: Update, context: CallbackContext):
@@ -252,17 +252,17 @@ def auditorii(update: Update, context: CallbackContext):
     query.answer()
     reply = InlineKeyboardMarkup(keyboard_backto_kafedra)
     query.message.reply_text(text='\n'.join(
-        content_lines[0:1]), parse_mode="Markdown")
+        content_lines[0:1]), parse_mode="MarkdownV2")
     query.message.reply_photo(link + photos[0])
     query.message.reply_text(text='\n'.join(
-        content_lines[2:7]), parse_mode="Markdown")
+        content_lines[2:7]), parse_mode="MarkdownV2")
     query.message.reply_photo(link + photos[1])
     query.message.reply_photo(link + photos[2])
     query.message.reply_text(text='\n'.join(
-        content_lines[7:8]), parse_mode="Markdown")
+        content_lines[7:8]), parse_mode="MarkdownV2")
     query.message.reply_photo(link + photos[3])
     query.message.reply_text(
-        text='\n'.join(content_lines[8:]), reply_markup=reply, parse_mode="Markdown")
+        text='\n'.join(content_lines[8:]), reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def vypusnyki(update: Update, context: CallbackContext):
@@ -278,10 +278,10 @@ def vypusnyki(update: Update, context: CallbackContext):
     reply = InlineKeyboardMarkup(keyboard_backto_kafedra)
     print(reply)
     query.message.reply_text(text='\n'.join(
-        content_lines[:13]), parse_mode="Markdown")
+        content_lines[:13]), parse_mode="MarkdownV2")
     query.message.reply_photo(link + photos[0])
     query.message.reply_text(
-        text='\n'.join(content_lines[13:]), reply_markup=reply, parse_mode="Markdown")
+        text='\n'.join(content_lines[13:]), reply_markup=reply, parse_mode="MarkdownV2")
 # -------------------------------**  end block kafedra  **----------------------------
 
 
@@ -296,7 +296,7 @@ def proektnnavch(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def dualosvita(update: Update, context: CallbackContext):
@@ -308,7 +308,7 @@ def dualosvita(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2V2")
 
 
 def pratsevlashuv(update: Update, context: CallbackContext):
@@ -320,7 +320,7 @@ def pratsevlashuv(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def praktika(update: Update, context: CallbackContext):
@@ -332,7 +332,7 @@ def praktika(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 # -------------------------------**   end block mozhlyvosti  **----------------------------
 
@@ -348,7 +348,7 @@ def predmetiZNO(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_umovy)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def rozrakhunokBalu(update: Update, context: CallbackContext):
@@ -360,7 +360,7 @@ def rozrakhunokBalu(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_umovy)
     query.message.reply_text(
-        text=content, reply_markup=reply)  # , parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def etapy(update: Update, context: CallbackContext):
@@ -372,7 +372,7 @@ def etapy(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_umovy)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def posylannya(update: Update, context: CallbackContext):
@@ -384,7 +384,7 @@ def posylannya(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_umovy)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 
 def kilkistMists(update: Update, context: CallbackContext):
@@ -396,14 +396,14 @@ def kilkistMists(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_umovy)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="Markdown")
+        text=content, reply_markup=reply, parse_mode="MarkdownV2")
 
 # -------------------------------**   end block umovy  **----------------------------
 
 
 def question(update, context):
     update.callback_query.message.reply_text('[Напишіть нашому представнику кафедри  ](https://t.me/kmad_khpi/)',
-                                             parse_mode="MarkdownV2", disable_web_page_preview=True)
+                                             parse_mode="MarkdownV2V2", disable_web_page_preview=True)
 
 
 def error(update, context):
