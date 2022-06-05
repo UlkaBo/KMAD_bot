@@ -219,7 +219,7 @@ def istoria(update: Update, context: CallbackContext):
     photos = read_content(link +
                           contents['start']['next_menu']['kafedra']['next_menu']['istoria']['photo'][0])
     print(photos)
-    photos = photos.split('\n')
+    photos = photos.split()
     print(photos)
     query = update.callback_query
     query.answer()
