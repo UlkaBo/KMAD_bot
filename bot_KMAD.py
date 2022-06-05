@@ -230,10 +230,14 @@ def istoria(update: Update, context: CallbackContext):
 
     for i in range(len(photos)):
         print('b', i)
-        query.message.reply_text(text='\n'.join(
-            content_lines[i*step:(i+1)*step]), parse_mode="Markdown")
+        text_message = '\n'.join(
+            content_lines[i*step:(i+1)*step])
+        print("text_message ", text_message)
+        query.message.reply_text(text= text_message, parse_mode="Markdown")
         print('m', i//step)
-        query.message.reply_photo(link + photos[i])
+        link_photo = link + photos[i]
+        print("link_photo ", link_photo)
+        query.message.reply_photo(link_photo)
         print('e', i)
         print('\n'.join(content_lines[i*step:]))
     query.message.reply_text(
@@ -402,7 +406,7 @@ def kilkistMists(update: Update, context: CallbackContext):
 
 
 def question(update, context):
-    update.callback_query.message.reply_text('[Напишіть нашому представнику кафедри  ](https://t.me/kmad_khpi/)',
+    update.callback_query.message.reply_text('[__Напишіть нашому представнику кафедри(тапні для переходу)__](https://t.me/kmad_khpi/)',
                                              parse_mode="Markdown", disable_web_page_preview=True)
 
 
