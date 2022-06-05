@@ -308,7 +308,7 @@ def dualosvita(update: Update, context: CallbackContext):
 
     reply = InlineKeyboardMarkup(keyboard_backto_mozhlyvosti)
     query.message.reply_text(
-        text=content, reply_markup=reply, parse_mode="MarkdownV2")
+        text=content, reply_markup=reply, parse_mode="Markdown")
 
 
 def pratsevlashuv(update: Update, context: CallbackContext):
@@ -403,7 +403,7 @@ def kilkistMists(update: Update, context: CallbackContext):
 
 def question(update, context):
     update.callback_query.message.reply_text('[Напишіть нашому представнику кафедри  ](https://t.me/kmad_khpi/)',
-                                             parse_mode="MarkdownV2", disable_web_page_preview=True)
+                                             parse_mode="Markdown", disable_web_page_preview=True)
 
 
 def error(update, context):
