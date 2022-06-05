@@ -82,14 +82,14 @@ keyboard_mozhlyvosti = [
     [InlineKeyboardButton("Практика", callback_data="praktika")],
 ]
 keyboard_umovy = [
-    [InlineKeyboardButton("Вступ на Бакалаврат на основі ПЗСО \n(після 11 класів) ",
+    [InlineKeyboardButton("Вступ на Бакалаврат на основі ПЗСО(після 11 класів)",
                           callback_data="predmetiZNO")],
     [InlineKeyboardButton("Розрахунок конкурсного балу",
                           callback_data="rozrakhunokBalu")],
     [InlineKeyboardButton("Етапи вступної кампанії",
                           callback_data="etapy")],
     [InlineKeyboardButton(
-        "Кількість бюджетних та \nконтрактних місць", callback_data="kilkistMists")],
+        "Кількість бюджетних та контрактних місць", callback_data="kilkistMists")],
     [InlineKeyboardButton("Корисні посилання",
                           callback_data="posylannya")],
 ]
