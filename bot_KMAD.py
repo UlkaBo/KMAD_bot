@@ -11,7 +11,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMa
 import datetime
 from config_ import TOKEN
 
-link = 'https://ulkabo.github.io/KMAD_bot/data/'
+link = 'https://vpikalova.github.io/KMAD_bot/data/'
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
